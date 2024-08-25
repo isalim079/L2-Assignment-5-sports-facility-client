@@ -23,11 +23,11 @@ const Navbar = () => {
   return (
     <div>
       <div
-        className={`absolute z-10 w-full bg-secondarySite/80 ${
-          isScrolled ? "sticky top-0 z-10 shadow-md" : ""
-        }`}
+        className={`transition-all ease-in-out duration-300 ${
+            isScrolled ? "fixed top-0 left-0 w-full z-10 shadow-md bg-secondarySite/80" : "absolute top-0 left-0 w-full z-10 bg-secondarySite/80"
+          }`}
       >
-        <div className="max-w-screen-xl mx-auto py-3">
+        <div className="max-w-screen-xl mx-auto py-2">
           <div className="flex justify-between items-center">
             {/* -------------------- Logo ------------------------ */}
             <div className="flex items-center gap-3">
