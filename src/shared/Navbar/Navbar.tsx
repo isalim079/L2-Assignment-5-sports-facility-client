@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import logo from "../../assets/logo.png";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -24,8 +25,10 @@ const Navbar = () => {
     <div>
       <div
         className={`transition-all ease-in-out duration-300 ${
-            isScrolled ? "fixed top-0 left-0 w-full z-10 shadow-md bg-secondarySite/80" : "absolute top-0 left-0 w-full z-10 bg-secondarySite/80"
-          }`}
+          isScrolled
+            ? "fixed top-0 left-0 w-full z-10 shadow-md bg-secondarySite/80"
+            : "absolute top-0 left-0 w-full z-10 bg-secondarySite/80"
+        }`}
       >
         <div className="max-w-screen-xl mx-auto py-2">
           <div className="flex justify-between items-center">
@@ -50,9 +53,11 @@ const Navbar = () => {
               <button className="bg-primarySite px-4 py-2 rounded-md text-white">
                 Dashboard
               </button>
-              <button className="bg-primarySite px-4 py-2 rounded-md text-white">
-                Sign Up
-              </button>
+              <Link to="/register">
+                <button className="bg-primarySite px-4 py-2 rounded-md text-white">
+                  Sign Up
+                </button>
+              </Link>
             </div>
           </div>
         </div>
