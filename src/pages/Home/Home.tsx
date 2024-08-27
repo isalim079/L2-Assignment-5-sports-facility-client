@@ -1,4 +1,5 @@
 import FeaturedFacilities from "./FeaturedFacilities/FeaturedFacilities";
+import HowItWorks from "./HowItWorks/HowItWorks";
 import TopBanner from "./TopBanner/TopBanner";
 
 const Home = () => {
@@ -6,6 +7,7 @@ const Home = () => {
         <div>
            <TopBanner />
            <FeaturedFacilities />
+           <HowItWorks />
         </div>
     );
 };

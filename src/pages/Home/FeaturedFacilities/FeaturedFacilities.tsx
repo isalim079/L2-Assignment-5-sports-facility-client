@@ -15,8 +15,6 @@ export type TFacility = {
 const FeaturedFacilities = () => {
   const { data: allFacilities } = useGetAllFacilitiesQuery(undefined);
 
-  console.log(allFacilities?.data);
-
   return (
     <div>
       <div className="max-w-screen-xl mx-auto font-poppins my-24">
