@@ -33,10 +33,14 @@ const Navbar = () => {
         <div className="max-w-screen-xl mx-auto py-2">
           <div className="flex justify-between items-center">
             {/* -------------------- Logo ------------------------ */}
-            <div className="flex items-center gap-3">
-              <img className="w-14" src={logo} alt="" />
-              <p className="font-archivo text-3xl text-primaryBlack">SFORCE</p>
-            </div>
+            <Link to='/'>
+              <div className="flex items-center gap-3">
+                <img className="w-14" src={logo} alt="" />
+                <p className="font-archivo text-3xl text-primaryBlack">
+                  SFORCE
+                </p>
+              </div>
+            </Link>
 
             {/* -------------------- Mid Section ------------------------ */}
             <div className="font-poppins">
@@ -50,9 +54,11 @@ const Navbar = () => {
 
             {/* -------------------- Right Section ------------------------ */}
             <div className="font-poppins flex items-center gap-4">
-              <button className="bg-primarySite px-4 py-2 rounded-md text-white">
-                Dashboard
-              </button>
+              <Link to="/admin-dashboard">
+                <button className="bg-primarySite px-4 py-2 rounded-md text-white">
+                  Dashboard
+                </button>
+              </Link>
               <Link to="/register">
                 <button className="bg-primarySite px-4 py-2 rounded-md text-white">
                   Sign Up
