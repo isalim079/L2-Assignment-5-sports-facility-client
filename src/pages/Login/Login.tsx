@@ -32,9 +32,11 @@ const Login = () => {
     }
    const res = await login(userInfo).unwrap()
 
+   console.log(res);
+
    const user = verifyToken(res.token)
 
-   dispatch(setUser({user: user, token: res.token}))
+   dispatch(setUser({user: {user, userInfo: res.data}, token: res.token}))
   };
 
   return (
