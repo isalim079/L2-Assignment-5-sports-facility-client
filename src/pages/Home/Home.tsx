@@ -2,6 +2,7 @@ import CustomerTestimonials from "./CustomerTestimonials/CustomerTestimonials";
 import FeaturedFacilities from "./FeaturedFacilities/FeaturedFacilities";
 import HowItWorks from "./HowItWorks/HowItWorks";
 import TopBanner from "./TopBanner/TopBanner";
+import UpcomingEvents from "./UpcomingEvents/UpcomingEvents";
 
 const Home = () => {
   return (
@@ -10,6 +11,7 @@ const Home = () => {
       <FeaturedFacilities />
       <HowItWorks />
       <CustomerTestimonials />
+      <UpcomingEvents />
     </div>
   );
 };
