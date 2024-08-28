@@ -1,4 +1,4 @@
-import CustomerTestimonials from "./CustomerTestimonials/CustomerTestimonials";
+import CustomerTestimonials from "./CustomerTestimonials(victorySpeaks)/CustomerTestimonials";
 import FeaturedFacilities from "./FeaturedFacilities/FeaturedFacilities";
 import HowItWorks from "./HowItWorks/HowItWorks";
 import TopBanner from "./TopBanner/TopBanner";

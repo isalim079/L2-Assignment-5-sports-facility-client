@@ -77,6 +77,11 @@ module.exports = {
       fontFamily: {
         "poppins": "'Poppins', system-ui",
         "archivo": "'Archivo Black', sans-serif"
+      },
+      backgroundImage: {
+        'bg1': "url('/src/assets/bg1.jpg')",
+        'bg2': "url('/src/assets/bg2.png')",
+        'bg3': "url('/src/assets/bg3.png')",
       }
     },
   },

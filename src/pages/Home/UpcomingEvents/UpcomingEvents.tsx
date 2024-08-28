@@ -56,8 +56,8 @@ const upcomingEventsData = [
 
 const UpcomingEvents = () => {
   return (
-    <div>
-      <div className="max-w-screen-xl mx-auto font-poppins my-24">
+    <div className="bg-bg1 bg-cover">
+      <div className="max-w-screen-xl mx-auto font-poppins py-24">
         <h1 className="text-center text-3xl uppercase font-bold text-primarySite">
           Upcoming Sports Events
         </h1>

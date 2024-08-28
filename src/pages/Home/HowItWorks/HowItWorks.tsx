@@ -3,7 +3,7 @@ import { MdSwipeRightAlt } from "react-icons/md";
 
 const HowItWorks = () => {
   return (
-    <div className="">
+    <div  className="bg-bg3 ">
       <div className="max-w-screen-xl mx-auto font-poppins my-24">
         <h1 className="text-center text-3xl uppercase font-bold text-primarySite">
           How It Works...??
