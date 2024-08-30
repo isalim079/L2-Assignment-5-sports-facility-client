@@ -5,8 +5,9 @@ import { useSelector } from "react-redux";
 
 const AdminInfo = () => {
   const user = useSelector(selectCurrentUser);
+
   const userInfo = user?.userInfo;
-  console.log(userInfo);
+
 
   return (
     <div>

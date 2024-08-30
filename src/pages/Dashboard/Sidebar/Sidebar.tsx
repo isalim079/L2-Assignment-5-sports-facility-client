@@ -2,7 +2,7 @@ import logo from "@/assets/logo.png";
 import { logout } from "@/redux/features/auth/authSlice";
 import { BiExit } from "react-icons/bi";
 import { FaUsers } from "react-icons/fa";
-import { MdSportsHandball } from "react-icons/md";
+import { MdHome, MdSportsHandball } from "react-icons/md";
 import { TbBrandBooking } from "react-icons/tb";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
@@ -27,14 +27,37 @@ const Sidebar = () => {
             </Link>
             <div>
               <ul className="space-y-3 mt-5">
-                <li className="flex items-center gap-2">
-                  <MdSportsHandball className="text-xl" /> Facility
+                <li>
+                  <Link
+                    className="flex items-center gap-2"
+                    to="/admin-dashboard"
+                  >
+                    <MdHome className="text-xl" /> Dashboard
+                  </Link>
                 </li>
-                <li className="flex items-center gap-2">
-                  <TbBrandBooking className="text-xl" /> Bookings
+                <li>
+                  <Link
+                    className="flex items-center gap-2"
+                    to="/admin-dashboard/facility-management"
+                  >
+                    <MdSportsHandball className="text-xl" /> Facility
+                  </Link>
                 </li>
-                <li className="flex items-center gap-2">
-                  <FaUsers className="text-xl" /> Users
+                <li>
+                  <Link
+                    className="flex items-center gap-2"
+                    to="/admin-dashboard/all-bookings"
+                  >
+                    <TbBrandBooking className="text-xl" /> Bookings
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="flex items-center gap-2"
+                    to="/admin-dashboard/usersManagement"
+                  >
+                    <FaUsers className="text-xl" /> Users
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -48,7 +71,6 @@ const Sidebar = () => {
             </button>
           </div>
         </div>
-      
       </div>
     </div>
   );

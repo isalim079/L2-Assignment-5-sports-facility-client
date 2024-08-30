@@ -13,7 +13,7 @@ import facility1 from '@/assets/facility1.png'
 
 const FacilityManagement = () => {
   const { data: allFacilities } = useGetAllFacilitiesQuery(undefined);
-  console.log(allFacilities);
+  // console.log(allFacilities);
 
   return (
     <div>
@@ -26,16 +26,18 @@ const FacilityManagement = () => {
        
           <TableHeader>
             <TableRow>
+              <TableHead className="">#</TableHead>
               <TableHead className="w-[100px]">Name</TableHead>
               <TableHead>Facility Type</TableHead>
               <TableHead>Location</TableHead>
-              <TableHead className="text-right">Price Per Hour</TableHead>
+              <TableHead className="text-right">Price <span className="block text-xs">(/hr)</span></TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
            {allFacilities === "undefined" ? <Skeleton /> : 
-            allFacilities?.data?.map((item: TFacility) => (
+            allFacilities?.data?.map((item: TFacility, index: number) => (
                 <TableRow key={item?._id}>
+                  <TableCell className="font-medium">{index + 1}</TableCell>
                   <TableCell className="font-medium">{item.name}</TableCell>
                   <TableCell>{item.facilityType}</TableCell>
                   <TableCell>{item.location}</TableCell>
