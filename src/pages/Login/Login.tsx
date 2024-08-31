@@ -8,8 +8,7 @@ import { setUser } from "@/redux/features/auth/authSlice";
 import { verifyToken } from "@/utiles/verifyToken";
 
 const Login = () => {
-
-    const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
 
   const {
     register,
@@ -17,26 +16,25 @@ const Login = () => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-        email: "srs@mail.com",
-        password: "programming-hero"
-    }
+      email: "srs@mail.com",
+      password: "programming-hero",
+    },
   });
 
-  const [login] = useLoginMutation()
-
+  const [login] = useLoginMutation();
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     const userInfo = {
-        email: data.email,
-        password: data.password
-    }
-   const res = await login(userInfo).unwrap()
+      email: data.email,
+      password: data.password,
+    };
+    const res = await login(userInfo).unwrap();
 
-   console.log(res);
+    console.log(res);
 
-   const user = verifyToken(res.token)
+    const user = verifyToken(res.token);
 
-   dispatch(setUser({user: {user, userInfo: res.data}, token: res.token}))
+    dispatch(setUser({ user: { user, userInfo: res.data }, token: res.token }));
   };
 
   return (

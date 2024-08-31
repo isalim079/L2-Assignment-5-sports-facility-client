@@ -1,5 +1,6 @@
 import App from "@/App";
 import ProtectedRoute from "@/components/layout/ProtectedRoute";
+import AddAdmin from "@/pages/Dashboard/AdminDashboard/AddAdmin/AddAdmin";
 import AdminDashboard from "@/pages/Dashboard/AdminDashboard/AdminDashboard";
 import FacilityBookings from "@/pages/Dashboard/AdminDashboard/FacilityBookings/FacilityBookings";
 import FacilityManagement from "@/pages/Dashboard/AdminDashboard/FacilityManagement/FacilityManagement";
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
           {
             path: 'all-bookings',
             element: <ManageBookings />
+          },
+          {
+            path: 'add-admin',
+            element: <AddAdmin />
           },
         ]
       },

@@ -2,7 +2,7 @@ import logo from "@/assets/logo.png";
 import { logout } from "@/redux/features/auth/authSlice";
 import { BiExit } from "react-icons/bi";
 import { FaUsers } from "react-icons/fa";
-import { MdHome, MdSportsHandball } from "react-icons/md";
+import { MdAdminPanelSettings, MdHome, MdSportsHandball } from "react-icons/md";
 import { TbBrandBooking } from "react-icons/tb";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
@@ -57,6 +57,14 @@ const Sidebar = () => {
                     to="/admin-dashboard/usersManagement"
                   >
                     <FaUsers className="text-xl" /> Users
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="flex items-center gap-2"
+                    to="/admin-dashboard/add-admin"
+                  >
+                    <MdAdminPanelSettings className="text-xl" /> Add Admin
                   </Link>
                 </li>
               </ul>
