@@ -9,25 +9,40 @@ const facilityManagementApi = baseApi.injectEndpoints({
       }),
     }),
     getSingleFacility: builder.query({
-      query: ({id, token}) => ({
+      query: ({ id, token }) => ({
         url: `/facility/${id}`,
         method: "GET",
         headers: {
-          Authorization: token
-      }
+          Authorization: token,
+        },
       }),
     }),
     updateSingleFacility: builder.mutation({
-      query: ({id, token, data}) => ({
+      query: ({ id, token, data }) => ({
         url: `/facility/${id}`,
         method: "PUT",
         body: data,
         headers: {
-          Authorization: token
-      }
+          Authorization: token,
+        },
+      }),
+    }),
+    AddFacility: builder.mutation({
+      query: ({token, data }) => ({
+        url: `/facility`,
+        method: "POST",
+        body: data,
+        headers: {
+          Authorization: token,
+        },
       }),
     }),
   }),
 });
 
-export const { useGetAllFacilitiesQuery, useGetSingleFacilityQuery, useUpdateSingleFacilityMutation } = facilityManagementApi;
+export const {
+  useGetAllFacilitiesQuery,
+  useGetSingleFacilityQuery,
+  useUpdateSingleFacilityMutation,
+  useAddFacilityMutation,
+} = facilityManagementApi;

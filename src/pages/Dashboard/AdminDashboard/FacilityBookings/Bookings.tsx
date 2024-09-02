@@ -12,17 +12,33 @@ import { useGetAllBookingsQuery } from "@/redux/features/bookings/bookingManagem
 import { useSelector } from "react-redux";
 import { useCurrentToken } from "@/redux/features/auth/authSlice";
 import { TBooking } from "@/types/types";
-import { ScrollArea } from "@radix-ui/react-scroll-area";
 import Loading from "@/components/Loading/Loading";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import PaginationComponent from "@/components/pagination/pagination";
 
 const Bookings = () => {
   const token = useSelector(useCurrentToken);
   // console.log(token);
 
   const { data: allBookings, isLoading, error } = useGetAllBookingsQuery(`Bearer ${token}`);
-
   // console.log(error);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
+
+  const totalItems = allBookings?.data?.length || 0;
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
+
+  const currentFacilities = allBookings?.data?.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+  // console.log(currentFacilities);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
 
   return (
     <div>
@@ -32,7 +48,6 @@ const Bookings = () => {
           <h1 className=" font-bold text-xl text-primarySite">All Bookings</h1>
         </div>
         <Table>
-          <ScrollArea className="h-[520px]">
             <TableHeader>
               <TableRow>
                 <TableHead className="">#</TableHead>
@@ -45,11 +60,15 @@ const Bookings = () => {
             </TableHeader>
             <TableBody>
               {isLoading ? (
-                <Loading />
+                <TableRow>
+                <TableCell colSpan={6}>
+                  <Loading />
+                </TableCell>
+              </TableRow>
               ) : (
                 allBookings?.data?.map((item: TBooking, index: number) => (
                   <TableRow key={item?._id}>
-                    <TableCell className="font-medium">{index + 1}</TableCell>
+                    <TableCell className="font-medium">{((currentPage - 1) * itemsPerPage) + index + 1}</TableCell>
                     <TableCell className="font-medium">
                       {item.user.name}
                     </TableCell>
@@ -73,15 +92,23 @@ const Bookings = () => {
                 ))
               )}
             </TableBody>
-          </ScrollArea>
         </Table>
-        <div className=" flex justify-end p-10">
+
+              <div className="flex items-center flex-row-reverse justify-between mt-5 px-20 pb-5">
+              <PaginationComponent
+            totalPages={totalPages}
+            currentPage={currentPage}
+            handlePageChange={handlePageChange}
+          />
+        <div className=" flex justify-end">
           <Link to="/admin-dashboard/all-bookings">
             <button className="border border-primaryBlack px-4 py-2 rounded-md hover:bg-primaryBlack hover:text-white transition-all ease-in-out duration-200">
               View All Bookings
             </button>
           </Link>
         </div>
+              </div>
+        
       </div>
     </div>
   );
