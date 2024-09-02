@@ -6,27 +6,57 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Skeleton } from "@/components/ui/skeleton";
 import bookings from "@/assets/bookings.png";
 import { useGetAllBookingsQuery } from "@/redux/features/bookings/bookingManagement.api";
 import { useSelector } from "react-redux";
 import { useCurrentToken } from "@/redux/features/auth/authSlice";
 import { TBooking } from "@/types/types";
+import { useState } from "react";
+import PaginationComponent from "@/components/pagination/pagination";
+import Loading from "@/components/Loading/Loading";
+import ItemsPerPage from "@/components/pagination/ItemsPerPage";
 
 const ManageBookings = () => {
   const token = useSelector(useCurrentToken);
 
-  const { data: allBookings } = useGetAllBookingsQuery(`Bearer ${token}`);
-
+  const { data: allBookings, isLoading } = useGetAllBookingsQuery(
+    `Bearer ${token}`
+  );
   // console.log(allBookings);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(8);
+
+  const totalItems = allBookings?.data?.length || 0;
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
+
+  const currentBookings = allBookings?.data?.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+  // console.log(currentFacilities);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
+
+  const handleItemsPerPage = (data: string) => {
+    setItemsPerPage(Number(data));
+  };
 
   return (
     <div>
       <div className="font-poppins">
         <div className="flex items-center justify-center gap-3  mb-5">
           <img className="w-8" src={bookings} alt="" />
-          <h1 className=" font-bold text-xl text-primarySite">All Bookings</h1>
+          <h1 className=" font-bold text-xl text-primarySite">
+            All Bookings{" "}
+            <span className="text-sm font-normal text-primaryBlack block">
+              (Total: {allBookings?.data?.length})
+            </span>
+          </h1>
         </div>
+        <ItemsPerPage handleItemsPerPage={handleItemsPerPage} />
         <Table>
           <TableHeader>
             <TableRow>
@@ -39,13 +69,17 @@ const ManageBookings = () => {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {allBookings === "undefined" ? (
-              <Skeleton />
+            {isLoading ? (
+              <TableRow>
+                <TableCell colSpan={6}>
+                  <Loading />
+                </TableCell>
+              </TableRow>
             ) : (
-              allBookings?.data?.map((item: TBooking, index: number) => (
+              currentBookings?.map((item: TBooking, index: number) => (
                 <TableRow key={item?._id}>
                   <TableCell className="font-medium">
-                    {index + 1}
+                    {(currentPage - 1) * itemsPerPage + index + 1}
                   </TableCell>
                   <TableCell className="font-medium">
                     {item.user.name}
@@ -71,6 +105,13 @@ const ManageBookings = () => {
             )}
           </TableBody>
         </Table>
+        <div className="my-5">
+          <PaginationComponent
+            totalPages={totalPages}
+            currentPage={currentPage}
+            handlePageChange={handlePageChange}
+          />
+        </div>
       </div>
     </div>
   );

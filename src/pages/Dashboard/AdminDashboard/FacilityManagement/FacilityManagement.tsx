@@ -21,6 +21,7 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 import { useSelector } from "react-redux";
 import { useCurrentToken } from "@/redux/features/auth/authSlice";
+import ItemsPerPage from "@/components/pagination/ItemsPerPage";
 
 const FacilityManagement = () => {
   const token = useSelector(useCurrentToken);
@@ -35,7 +36,7 @@ const FacilityManagement = () => {
   const [deleteFacility] = useDeleteFacilityMutation();
 
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 8;
+  const [itemsPerPage, setItemsPerPage] = useState(8);
 
   const totalItems = allFacilities?.data?.length || 0;
   const totalPages = Math.ceil(totalItems / itemsPerPage);
@@ -48,6 +49,10 @@ const FacilityManagement = () => {
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
+  };
+
+  const handleItemsPerPage = (data: string) => {
+    setItemsPerPage(Number(data));
   };
 
   const handleDelete = (item: any) => {
@@ -86,6 +91,7 @@ const FacilityManagement = () => {
             </span>
           </h1>
         </div>
+        <ItemsPerPage handleItemsPerPage={handleItemsPerPage}/>
         <Table>
           <TableHeader>
             <TableRow>

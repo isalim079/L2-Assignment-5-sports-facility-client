@@ -1,4 +1,5 @@
 import App from "@/App";
+import AdminProtectedRoute from "@/components/layout/AdminProtectedRoute";
 import ProtectedRoute from "@/components/layout/ProtectedRoute";
 import AddAdmin from "@/pages/Dashboard/AdminDashboard/AddAdmin/AddAdmin";
 import AdminDashboard from "@/pages/Dashboard/AdminDashboard/AdminDashboard";
@@ -34,39 +35,41 @@ const router = createBrowserRouter([
         path: "/admin-dashboard",
         element: (
           <ProtectedRoute>
+            <AdminProtectedRoute>
             <AdminDashboard />
+            </AdminProtectedRoute>
           </ProtectedRoute>
         ),
         children: [
           {
-            path: 'usersManagement',
-            element: <UserManagement />
+            path: "usersManagement",
+            element: <UserManagement />,
           },
           {
-            path: '',
-            element: <FacilityBookings />
+            path: "",
+            element: <FacilityBookings />,
           },
           {
-            path: 'facility-management',
-            element: <FacilityManagement />
+            path: "facility-management",
+            element: <FacilityManagement />,
           },
           {
-            path: 'all-bookings',
-            element: <ManageBookings />
+            path: "all-bookings",
+            element: <ManageBookings />,
           },
           {
-            path: 'add-admin',
-            element: <AddAdmin />
+            path: "add-admin",
+            element: <AddAdmin />,
           },
           {
-            path: 'add-facility',
-            element: <AddFacility />
+            path: "add-facility",
+            element: <AddFacility />,
           },
           {
-            path: 'update-facility/:id',
-            element: <UpdateFacility />
+            path: "update-facility/:id",
+            element: <UpdateFacility />,
           },
-        ]
+        ],
       },
     ],
   },
