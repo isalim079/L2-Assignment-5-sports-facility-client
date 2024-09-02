@@ -16,7 +16,7 @@ import { TBooking } from "@/types/types";
 const ManageBookings = () => {
   const token = useSelector(useCurrentToken);
 
-  const { data: allBookings } = useGetAllBookingsQuery(token);
+  const { data: allBookings } = useGetAllBookingsQuery(`Bearer ${token}`);
 
   // console.log(allBookings);
 

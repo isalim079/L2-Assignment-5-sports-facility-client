@@ -1,14 +1,17 @@
 import bg from "../../assets/register.jpg";
 import logo from "../../assets/logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { useLoginMutation } from "@/redux/features/auth/authApi";
 import { useAppDispatch } from "@/redux/hooks";
 import { setUser } from "@/redux/features/auth/authSlice";
 import { verifyToken } from "@/utiles/verifyToken";
+import { toast } from "sonner";
 
 const Login = () => {
   const dispatch = useAppDispatch();
+
+  const navigate = useNavigate()
 
   const {
     register,
@@ -30,11 +33,23 @@ const Login = () => {
     };
     const res = await login(userInfo).unwrap();
 
-    console.log(res);
+    // console.log(res);
 
     const user = verifyToken(res.token);
 
     dispatch(setUser({ user: { user, userInfo: res.data }, token: res.token }));
+
+    if (res.success === true) {
+      toast.success("Login successful!");
+
+      setTimeout(() => {
+        navigate('/')
+      }, 2000)
+   
+    } else {
+      toast.error("Something went wrong");
+    }
+
   };
 
   return (

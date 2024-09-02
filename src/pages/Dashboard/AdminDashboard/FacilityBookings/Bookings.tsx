@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {
   Table,
   TableBody,
@@ -17,10 +18,11 @@ import { Link } from "react-router-dom";
 
 const Bookings = () => {
   const token = useSelector(useCurrentToken);
+  // console.log(token);
 
-  const { data: allBookings, isLoading } = useGetAllBookingsQuery(token);
+  const { data: allBookings, isLoading, error } = useGetAllBookingsQuery(`Bearer ${token}`);
 
-  // console.log(allBookings);
+  // console.log(error);
 
   return (
     <div>

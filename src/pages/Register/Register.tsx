@@ -1,8 +1,46 @@
 import bg from "../../assets/register.jpg";
 import logo from "../../assets/logo.png";
-import { Link } from "react-router-dom";
+import { Link,  useNavigate } from "react-router-dom";
+import { FieldValues, useForm } from "react-hook-form";
+import { useRegisterMutation } from "@/redux/features/auth/authApi";
+import { toast } from "sonner";
 
 const Register = () => {
+  const { register, handleSubmit, reset } = useForm();
+
+  const [addAdmin] = useRegisterMutation();
+  // console.log(error);
+
+  const navigate = useNavigate()
+
+  const onSubmit = async (data: FieldValues) => {
+    // console.log(data);
+
+    const userInfo = {
+      name: data.name,
+      email: data.email,
+      password: data.password,
+      phone: data.phone,
+      role: 'user',
+      address: data.address,
+    };
+
+    const res = await addAdmin(userInfo).unwrap();
+    if (res.success === true) {
+      toast.success("Registration successful!");
+      reset();
+
+      setTimeout(() => {
+        navigate('/')
+      }, 2000)
+   
+    } else {
+      toast.error("Something went wrong");
+    }
+
+    // console.log(res.success);
+  };
+
   return (
     <div>
       <div>
@@ -23,64 +61,75 @@ const Register = () => {
               </div>
 
               {/* ------------- Input container --------------- */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <form
+                onSubmit={handleSubmit(onSubmit)}
+                className="grid grid-cols-1 md:grid-cols-2 gap-8"
+              >
                 <div className="md:col-span-2">
                   <label htmlFor="name" className="block mb-1">
-                    Name
+                    Name *
                   </label>
                   <input
                     type="text"
                     id="name"
                     placeholder="Enter your name"
                     className="py-2 px-3 rounded-md w-full text-primaryBlack"
+                    {...register("name", { required: true })}
                   />
                 </div>
                 <div>
-                  <label htmlFor="name" className="block mb-1">
-                    Email
+                  <label htmlFor="email" className="block mb-1">
+                    Email *
                   </label>
                   <input
                     type="email"
                     id="email"
                     placeholder="Enter your email"
                     className="py-2 px-3 rounded-md text-primaryBlack"
+                    {...register("email", { required: true })}
                   />
                 </div>
                 <div>
-                  <label htmlFor="name" className="block mb-1">
-                    Password
+                  <label htmlFor="password" className="block mb-1">
+                    Password *
                   </label>
                   <input
                     type="password"
                     id="password"
                     placeholder="Enter your password"
                     className="py-2 px-3 rounded-md text-primaryBlack"
+                    {...register("password", { required: true })}
                   />
                 </div>
                 <div>
-                  <label htmlFor="name" className="block mb-1">
-                    Phone
+                  <label htmlFor="phone" className="block mb-1">
+                    Phone *
                   </label>
                   <input
                     type="text"
                     id="phone"
                     placeholder="Enter your phone number"
                     className="py-2 px-3 rounded-md text-primaryBlack"
+                    {...register("phone", { required: true })}
                   />
                 </div>
                 <div>
-                  <label htmlFor="name" className="block mb-1">
-                    Address
+                  <label htmlFor="address" className="block mb-1">
+                    Address *
                   </label>
                   <input
                     type="text"
                     id="address"
                     placeholder="Enter your phone address"
                     className="py-2 px-3 rounded-md text-primaryBlack"
+                    {...register("address", { required: true })}
                   />
                 </div>
                 <div className="md:col-span-2">
-                  <button className="bg-primarySite w-full py-2 rounded-md text-white">
+                  <button
+                    type="submit"
+                    className="bg-primarySite w-full py-2 rounded-md text-white"
+                  >
                     Register
                   </button>
                   <p className="text-sm mt-3">
@@ -90,7 +139,7 @@ const Register = () => {
                     </span>
                   </p>
                 </div>
-              </div>
+              </form>
             </div>
           </div>
         </div>

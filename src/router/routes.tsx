@@ -3,7 +3,9 @@ import ProtectedRoute from "@/components/layout/ProtectedRoute";
 import AddAdmin from "@/pages/Dashboard/AdminDashboard/AddAdmin/AddAdmin";
 import AdminDashboard from "@/pages/Dashboard/AdminDashboard/AdminDashboard";
 import FacilityBookings from "@/pages/Dashboard/AdminDashboard/FacilityBookings/FacilityBookings";
+import AddFacility from "@/pages/Dashboard/AdminDashboard/FacilityManagement/AddFacility";
 import FacilityManagement from "@/pages/Dashboard/AdminDashboard/FacilityManagement/FacilityManagement";
+import UpdateFacility from "@/pages/Dashboard/AdminDashboard/FacilityManagement/UpdateFacility";
 import ManageBookings from "@/pages/Dashboard/AdminDashboard/ManageBookings/ManageBookings";
 import UserManagement from "@/pages/Dashboard/AdminDashboard/UserManagement/UserMangement";
 import Home from "@/pages/Home/Home";
@@ -55,6 +57,14 @@ const router = createBrowserRouter([
           {
             path: 'add-admin',
             element: <AddAdmin />
+          },
+          {
+            path: 'add-facility',
+            element: <AddFacility />
+          },
+          {
+            path: 'update-facility/:id',
+            element: <UpdateFacility />
           },
         ]
       },
