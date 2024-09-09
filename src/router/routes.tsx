@@ -15,6 +15,7 @@ import UserManagement from "@/pages/Dashboard/AdminDashboard/UserManagement/User
 import TransactionHistory from "@/pages/Dashboard/UserDashboard/TransactionHistory/TransactionHistory";
 import UserBookings from "@/pages/Dashboard/UserDashboard/UserBookings/UserBookings";
 import UserDashboard from "@/pages/Dashboard/UserDashboard/UserDashboard";
+import Facility from "@/pages/Faciltity/Facility";
 import Home from "@/pages/Home/Home";
 import Login from "@/pages/Login/Login";
 import Register from "@/pages/Register/Register";
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
       {
         path: "/checkout",
         element: <Checkout />,
+      },
+      {
+        path: "/facility",
+        element: <Facility />,
       },
       {
         path: "/admin-dashboard",
