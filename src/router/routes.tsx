@@ -11,6 +11,8 @@ import FacilityManagement from "@/pages/Dashboard/AdminDashboard/FacilityManagem
 import UpdateFacility from "@/pages/Dashboard/AdminDashboard/FacilityManagement/UpdateFacility";
 import ManageBookings from "@/pages/Dashboard/AdminDashboard/ManageBookings/ManageBookings";
 import UserManagement from "@/pages/Dashboard/AdminDashboard/UserManagement/UserMangement";
+import TransactionHistory from "@/pages/Dashboard/UserDashboard/TransactionHistory/TransactionHistory";
+import UserBookings from "@/pages/Dashboard/UserDashboard/UserBookings/UserBookings";
 import UserDashboard from "@/pages/Dashboard/UserDashboard/UserDashboard";
 import Home from "@/pages/Home/Home";
 import Login from "@/pages/Login/Login";
@@ -47,7 +49,7 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <AdminProtectedRoute>
-            <AdminDashboard />
+              <AdminDashboard />
             </AdminProtectedRoute>
           </ProtectedRoute>
         ),
@@ -83,8 +85,26 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: '/user-dashboard',
-        element: <ProtectedRoute><UserDashboard /></ProtectedRoute>
+        path: "/user-dashboard",
+        element: (
+          <ProtectedRoute>
+            <UserDashboard />
+          </ProtectedRoute>
+        ),
+        children: [
+          {
+            path: "",
+            element: <UserBookings />,
+          },
+          {
+            path: "booking-management",
+            element: <UserBookings />,
+          },
+          {
+            path: "transaction-history",
+            element: <TransactionHistory />,
+          },
+        ]
       },
     ],
   },

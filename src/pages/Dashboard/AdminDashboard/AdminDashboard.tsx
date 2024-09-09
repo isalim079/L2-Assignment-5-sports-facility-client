@@ -9,11 +9,9 @@ const AdminDashboard = () => {
       <div className="col-span-2 bg-secondarySite/20">
         <Sidebar />
       </div>
-
       <div className="col-span-10 shadow-lg rounded-md p-10 bg-bg4 bg-cover">
         <AdminInfo />
         <Separator className="my-5" />
-
         <Outlet />
       </div>
     </div>
