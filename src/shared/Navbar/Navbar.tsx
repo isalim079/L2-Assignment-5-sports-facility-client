@@ -1,9 +1,23 @@
 import { useEffect, useState } from "react";
 import logo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { logout, selectCurrentUser } from "@/redux/features/auth/authSlice";
+import { useDispatch } from "react-redux";
+import { BiExit } from "react-icons/bi";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+
+  const user = useSelector(selectCurrentUser);
+
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    dispatch(logout());
+  };
+
+  // console.log(user?.user.role);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,7 +47,7 @@ const Navbar = () => {
         <div className="max-w-screen-xl mx-auto py-2">
           <div className="flex justify-between items-center">
             {/* -------------------- Logo ------------------------ */}
-            <Link to='/'>
+            <Link to="/">
               <div className="flex items-center gap-3">
                 <img className="w-14" src={logo} alt="" />
                 <p className="font-archivo text-3xl text-primaryBlack">
@@ -48,22 +62,35 @@ const Navbar = () => {
                 <li>About</li>
                 <li>Contact</li>
                 <li>Facility</li>
-                <li>Booking</li>
+                <Link to='/create-bookings'><li>Booking</li></Link>
               </ul>
             </div>
 
             {/* -------------------- Right Section ------------------------ */}
             <div className="font-poppins flex items-center gap-4">
-              <Link to="/admin-dashboard">
-                <button className="bg-primarySite px-4 py-2 rounded-md text-white">
-                  Dashboard
+              {user?.user?.role ? (
+                <Link to={`/${user?.user?.role}-dashboard`}>
+                  <button className="bg-primarySite px-4 py-2 rounded-md ">
+                    Dashboard
+                  </button>
+                </Link>
+              ) : (
+                ""
+              )}
+              {user?.user?.role ? (
+                <button
+                  className="flex items-center bg-primarySite px-4 py-2 rounded-md gap-2"
+                  onClick={handleLogout}
+                >
+                  Logout <BiExit className="text-lg" />
                 </button>
-              </Link>
-              <Link to="/register">
-                <button className="bg-primarySite px-4 py-2 rounded-md text-white">
-                  Sign Up
-                </button>
-              </Link>
+              ) : (
+                <Link to="/register">
+                  <button className="bg-primarySite px-4 py-2 rounded-md ">
+                    Sign Up
+                  </button>
+                </Link>
+              )}
             </div>
           </div>
         </div>

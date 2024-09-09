@@ -8,7 +8,11 @@ function App() {
 
   const noHeaderFooter =
     location.pathname.includes("/login") ||
-    location.pathname.includes("/register") || location.pathname.includes("/admin-dashboard");
+    location.pathname.includes("/register") ||
+    location.pathname.includes("/admin-dashboard") ||
+    location.pathname.includes("/user-dashboard");
+
+    const noFooter = location.pathname.includes('/checkout')
 
   return (
     <div>
@@ -18,7 +22,7 @@ function App() {
         </div>
       )}
       <Outlet />
-      {noHeaderFooter || (
+      {noHeaderFooter || noFooter || (
         <div>
           <Footer />
         </div>

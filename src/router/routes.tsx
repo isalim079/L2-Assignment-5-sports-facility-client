@@ -1,6 +1,8 @@
 import App from "@/App";
 import AdminProtectedRoute from "@/components/layout/AdminProtectedRoute";
 import ProtectedRoute from "@/components/layout/ProtectedRoute";
+import Checkout from "@/pages/Bookings/Checkout";
+import CreateBookings from "@/pages/Bookings/CreateBookings";
 import AddAdmin from "@/pages/Dashboard/AdminDashboard/AddAdmin/AddAdmin";
 import AdminDashboard from "@/pages/Dashboard/AdminDashboard/AdminDashboard";
 import FacilityBookings from "@/pages/Dashboard/AdminDashboard/FacilityBookings/FacilityBookings";
@@ -9,6 +11,7 @@ import FacilityManagement from "@/pages/Dashboard/AdminDashboard/FacilityManagem
 import UpdateFacility from "@/pages/Dashboard/AdminDashboard/FacilityManagement/UpdateFacility";
 import ManageBookings from "@/pages/Dashboard/AdminDashboard/ManageBookings/ManageBookings";
 import UserManagement from "@/pages/Dashboard/AdminDashboard/UserManagement/UserMangement";
+import UserDashboard from "@/pages/Dashboard/UserDashboard/UserDashboard";
 import Home from "@/pages/Home/Home";
 import Login from "@/pages/Login/Login";
 import Register from "@/pages/Register/Register";
@@ -30,6 +33,14 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/create-bookings",
+        element: <CreateBookings />,
+      },
+      {
+        path: "/checkout",
+        element: <Checkout />,
       },
       {
         path: "/admin-dashboard",
@@ -70,6 +81,10 @@ const router = createBrowserRouter([
             element: <UpdateFacility />,
           },
         ],
+      },
+      {
+        path: '/user-dashboard',
+        element: <ProtectedRoute><UserDashboard /></ProtectedRoute>
       },
     ],
   },

@@ -11,7 +11,7 @@ import { toast } from "sonner";
 const Login = () => {
   const dispatch = useAppDispatch();
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const {
     register,
@@ -33,7 +33,7 @@ const Login = () => {
     };
     const res = await login(userInfo).unwrap();
 
-    // console.log(res);
+    // console.log(res.data.role);
 
     const user = verifyToken(res.token);
 
@@ -43,13 +43,11 @@ const Login = () => {
       toast.success("Login successful!");
 
       setTimeout(() => {
-        navigate('/')
-      }, 2000)
-   
+        navigate(`/${res?.data?.role}-dashboard`);
+      }, 2000);
     } else {
       toast.error("Something went wrong");
     }
-
   };
 
   return (

@@ -27,5 +27,7 @@ export type TFacility = {
     user: TUser;
     facility: TFacility;
     payableAmount: number;
-    isBooked: 'confirmed' | 'unconfirmed' | 'canceled'
+    isBooked: 'confirmed' | 'unconfirmed' | 'canceled';
+    tnxId?: string
+    name?: string
   }
