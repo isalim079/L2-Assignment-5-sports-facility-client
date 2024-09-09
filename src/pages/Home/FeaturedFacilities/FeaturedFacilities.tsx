@@ -25,7 +25,7 @@ const FeaturedFacilities = () => {
           Discover a variety of premier sports venues, each designed to provide
           the best experience for your athletic needs.
         </p>
-        <div className="grid grid-cols-4 gap-10 mt-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mt-12">
           {allFacilities?.data?.map(
             (topFacility: TFacility) =>
               topFacility?.facilityType === "topFacility" && (

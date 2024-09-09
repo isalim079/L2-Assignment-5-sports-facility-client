@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { logout, selectCurrentUser } from "@/redux/features/auth/authSlice";
 import { useDispatch } from "react-redux";
 import { BiExit } from "react-icons/bi";
+import { AiOutlineMenuUnfold, AiOutlineMenuFold } from "react-icons/ai";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -35,6 +36,8 @@ const Navbar = () => {
     };
   }, []);
 
+  const [menuToggle, setMenuToggle] = useState(false);
+
   return (
     <div>
       <div
@@ -44,25 +47,25 @@ const Navbar = () => {
             : "absolute top-0 left-0 w-full z-10 bg-secondarySite/80"
         }`}
       >
-        <div className="max-w-screen-xl mx-auto py-2">
-          <div className="flex justify-between items-center">
+        <div className="max-w-screen-xl mx-auto py-2 px-2 lg:px-0">
+          <div className="flex flex-row-reverse lg:flex-row justify-between items-center">
             {/* -------------------- Logo ------------------------ */}
             <Link to="/">
               <div className="flex items-center gap-3">
-                <img className="w-14" src={logo} alt="" />
-                <p className="font-archivo text-3xl text-primaryBlack">
+                <img className="lg:w-14 w-10" src={logo} alt="" />
+                <p className="font-archivo text-lg lg:text-3xl text-primaryBlack">
                   SFORCE
                 </p>
               </div>
             </Link>
 
             {/* -------------------- Mid Section ------------------------ */}
-            <div className="font-poppins">
+            <div className="font-poppins hidden lg:block">
               <ul className="flex items-center gap-5 ">
                 <li>About</li>
                 <li>Contact</li>
                 <Link to="/facility">
-                <li>Facility</li>
+                  <li>Facility</li>
                 </Link>
                 <Link to="/create-bookings">
                   <li>Booking</li>
@@ -71,7 +74,7 @@ const Navbar = () => {
             </div>
 
             {/* -------------------- Right Section ------------------------ */}
-            <div className="font-poppins flex items-center gap-4">
+            <div className="font-poppins lg:flex items-center gap-4 hidden">
               {user?.user?.role ? (
                 <Link to={`/${user?.user?.role}-dashboard`}>
                   <button className="bg-primarySite px-4 py-2 rounded-md ">
@@ -95,6 +98,45 @@ const Navbar = () => {
                   </button>
                 </Link>
               )}
+            </div>
+
+            {/* ----------------------- Mobile section ------------------ */}
+            <div className="lg:hidden">
+              <button
+                className=" text-3xl "
+                onClick={() => setMenuToggle(!menuToggle)}
+              >
+                {menuToggle ? (
+                  <AiOutlineMenuUnfold></AiOutlineMenuUnfold>
+                ) : (
+                  <AiOutlineMenuFold></AiOutlineMenuFold>
+                )}
+              </button>
+              <div
+                className="absolute text-white"
+                onClick={() => setMenuToggle(!menuToggle)}
+              >
+                {menuToggle ? (
+                  <div className="bg-gray-800 p-6">
+                    <div className="space-y-4 text-xs list-none">
+                      <div className="font-poppins">
+                        <ul className="flex flex-col items-center gap-5 ">
+                          <li>About</li>
+                          <li>Contact</li>
+                          <Link to="/facility">
+                            <li>Facility</li>
+                          </Link>
+                          <Link to="/create-bookings">
+                            <li>Booking</li>
+                          </Link>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  ""
+                )}
+              </div>
             </div>
           </div>
         </div>
