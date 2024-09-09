@@ -1,6 +1,7 @@
 import App from "@/App";
 import AdminProtectedRoute from "@/components/layout/AdminProtectedRoute";
 import ProtectedRoute from "@/components/layout/ProtectedRoute";
+import NotFound from "@/components/NotFound/NotFound";
 import Checkout from "@/pages/Bookings/Checkout";
 import CreateBookings from "@/pages/Bookings/CreateBookings";
 import AddAdmin from "@/pages/Dashboard/AdminDashboard/AddAdmin/AddAdmin";
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <NotFound />,
     children: [
       {
         path: "/",
