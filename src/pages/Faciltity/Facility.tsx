@@ -1,6 +1,7 @@
 import { Separator } from "@/components/ui/separator";
 import { useGetAllFacilitiesQuery } from "@/redux/features/facility/facilityManagement.api";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export type TFacility = {
   _id: string;
@@ -80,27 +81,30 @@ const Facility = () => {
         </div>
 
         <div className="grid grid-cols-4 gap-10 mt-12">
-          {filteredFacilities?.map((topFacility: TFacility) => (
+          {filteredFacilities?.map((item: TFacility) => (
             <div
-              key={topFacility?._id}
+              key={item?._id}
               className="rounded-lg bg-secondarySite shadow-md"
             >
               <img
                 className="min-h-52 object-cover"
-                src={topFacility?.image}
+                src={item?.image}
                 alt=""
               />
               <div className="p-4">
                 <h1 className="font-bold animate__animated animate__slideInDown">
-                  {topFacility?.name}
+                  {item?.name}
                 </h1>
                 <Separator className="my-2 bg-primaryBlack" />
                 <div className="space-y-2 mt-5">
-                  <p>Price: ${topFacility?.pricePerHour}</p>
-                  <p>Location: {topFacility?.location}</p>
-                  <button className="bg-primarySite w-full py-2 shadow-sm">
-                    View Details
-                  </button>
+                  <p>Price: ${item?.pricePerHour}</p>
+                  <p>Location: {item?.location}</p>
+                  <Link to={`/facility-details/${item?._id}`}>
+                    {" "}
+                    <button className="bg-primarySite w-full py-2 shadow-sm mt-2">
+                      View Details
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>

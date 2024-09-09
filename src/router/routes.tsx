@@ -16,6 +16,7 @@ import TransactionHistory from "@/pages/Dashboard/UserDashboard/TransactionHisto
 import UserBookings from "@/pages/Dashboard/UserDashboard/UserBookings/UserBookings";
 import UserDashboard from "@/pages/Dashboard/UserDashboard/UserDashboard";
 import Facility from "@/pages/Faciltity/Facility";
+import FacilityDetails from "@/pages/Faciltity/FacilityDetails";
 import Home from "@/pages/Home/Home";
 import Login from "@/pages/Login/Login";
 import Register from "@/pages/Register/Register";
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
       {
         path: "/facility",
         element: <Facility />,
+      },
+      {
+        path: 'facility-details/:id',
+        element: <FacilityDetails />
       },
       {
         path: "/admin-dashboard",
