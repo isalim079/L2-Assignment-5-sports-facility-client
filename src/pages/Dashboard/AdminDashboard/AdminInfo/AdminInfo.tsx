@@ -11,8 +11,8 @@ const AdminInfo = () => {
 
   return (
     <div>
-      <div className="font-poppins">
-        <div className="flex items-center gap-7">
+      <div className="font-poppins px-2 lg:px-0">
+        <div className="lg:flex items-center gap-7">
           <img className="w-32" src={admin} alt="" />
           <div className="space-y-1">
             <p className="bg-primaryBlack text-white font-light text-xs max-w-20 text-center py-1 rounded-md mb-2">

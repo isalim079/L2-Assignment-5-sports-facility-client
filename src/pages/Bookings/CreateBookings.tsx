@@ -13,7 +13,10 @@ import {
 import { useState } from "react";
 import { useGetAllFacilitiesQuery } from "@/redux/features/facility/facilityManagement.api";
 import { TFacility } from "../Home/FeaturedFacilities/FeaturedFacilities";
-import { useCheckAvailabilityQuery, useCreateBookingMutation } from "@/redux/features/bookings/bookingManagement.api";
+import {
+  useCheckAvailabilityQuery,
+  useCreateBookingMutation,
+} from "@/redux/features/bookings/bookingManagement.api";
 import { toast } from "sonner";
 import moment from "moment";
 import { FieldValues, useForm } from "react-hook-form";
@@ -21,18 +24,22 @@ import { useDispatch } from "react-redux";
 import { setBookings } from "@/redux/features/bookings/bookingSlice";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { selectCurrentUser, useCurrentToken } from "@/redux/features/auth/authSlice";
+import {
+  logout,
+  selectCurrentUser,
+  useCurrentToken,
+} from "@/redux/features/auth/authSlice";
 
 const CreateBookings = () => {
-  const token = useSelector(useCurrentToken)
+  const token = useSelector(useCurrentToken);
   const user = useSelector(selectCurrentUser);
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { register, handleSubmit, reset } = useForm();
   const [date, setDate] = useState<Date>();
   const [selectedFacility, setSelectedFacility] = useState("");
   const { data: allFacility } = useGetAllFacilitiesQuery(undefined);
-  const [addBookingsData] = useCreateBookingMutation()
+  const [addBookingsData] = useCreateBookingMutation();
 
   const { data: availabilityData, refetch: checkAvailability } =
     useCheckAvailabilityQuery({
@@ -49,48 +56,58 @@ const CreateBookings = () => {
   };
 
   const onSubmit = async (data: FieldValues) => {
-    const facilityData = allFacility?.data?.filter((item: any) => item?._id === selectedFacility)
+    const facilityData = allFacility?.data?.filter(
+      (item: any) => item?._id === selectedFacility
+    );
     // console.log(facilityData[0]);
 
     const createBookingsData = {
       user: user?.user.id,
       facility: selectedFacility,
-        payableAmount: facilityData[0]?.pricePerHour,
+      payableAmount: facilityData[0]?.pricePerHour,
       date: moment(date).format("YYYY-MM-DD"),
       startTime: data.startTime,
       endTime: data.endTime,
-      isBooked: 'unconfirmed'
+      isBooked: "unconfirmed",
     };
-    
-    const res = await addBookingsData({data: createBookingsData, token: `Bearer ${token}`}).unwrap();
 
-    // console.log(res);
-    
-   await dispatch(setBookings({bookingData: res?.data}))
+    try {
+      const res = await addBookingsData({
+        data: createBookingsData,
+        token: `Bearer ${token}`,
+      }).unwrap();
 
-   if (res.success === true) {
-    toast.success("Payment processing...!");
+      await dispatch(setBookings({ bookingData: res?.data }));
 
-    setTimeout(() => {
-      navigate(`/checkout`);
-    }, 2000);
-  } else {
-    toast.error("Something went wrong");
-  }
+      if (res.success === true) {
+        toast.success("Payment processing...!");
 
+        setTimeout(() => {
+          navigate(`/checkout`);
+        }, 2000);
+      } else {
+        toast.error("Something went wrong");
+      }
+    } catch (error) {
+      toast.error("You have unauthorized access. Please login again...");
 
-  };
+      setTimeout(() => {
+        dispatch(logout());
+        navigate("/login");
+      }, 2000);
+    }
+  };  
 
   return (
     <div className="font-poppins">
-      <div className="flex items-center justify-center gap-3  mb-10 mt-32">
+      <div className="flex items-center justify-center gap-3  mb-10 mt-24 lg:mt-32">
         <h1 className=" font-bold text-3xl text-primarySite">
           Book your desire facility...!
         </h1>
       </div>
       <div className="max-w-screen-xl mx-auto">
-        <div className="flex justify-center gap-32 items-center h-screen">
-          <div className="space-y-5 w-full">
+        <div className="lg:flex justify-center gap-32 items-center lg:h-screen px-2 lg:px-0">
+          <div className="space-y-5 w-full mb-5 lg:mb-0">
             <div>
               <select
                 onChange={(e) => setSelectedFacility(e.target.value)}
@@ -216,11 +233,12 @@ const CreateBookings = () => {
                 />
               </div>
               <div>
-              
-                  <button type="submit" className="bg-primaryBlack w-full text-secondarySite py-2 rounded-md shadow-sm">
-                    Proceed to Pay
-                  </button>
-              
+                <button
+                  type="submit"
+                  className="bg-primaryBlack w-full text-secondarySite py-2 rounded-md shadow-sm"
+                >
+                  Proceed to Pay
+                </button>
               </div>
             </div>
           </form>

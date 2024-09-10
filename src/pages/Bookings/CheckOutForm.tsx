@@ -97,7 +97,7 @@ const CheckOutForm = () => {
   return (
     <div className="">
       <div className="max-w-screen-xl mx-auto">
-        <div className=" h-screen flex flex-col justify-center items-center">
+        <div className=" lg:h-screen flex flex-col justify-center items-center mt-28 lg:mt-0">
           <div className="mb-4">
             <p>
               Total:{" "}

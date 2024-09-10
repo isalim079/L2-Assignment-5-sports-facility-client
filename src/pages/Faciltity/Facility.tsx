@@ -48,7 +48,7 @@ const Facility = () => {
 
   return (
     <div>
-      <div className="max-w-screen-xl mx-auto font-poppins mb-20 mt-36">
+      <div className="max-w-screen-xl mx-auto font-poppins mb-20 mt-24 lg:mt-36 px-2 lg:px-0">
         <h1 className="text-center text-3xl uppercase font-bold text-primarySite">
           Explore Our Facilities
         </h1>
@@ -80,17 +80,13 @@ const Facility = () => {
           </select>
         </div>
 
-        <div className="grid grid-cols-4 gap-10 mt-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mt-12">
           {filteredFacilities?.map((item: TFacility) => (
             <div
               key={item?._id}
               className="rounded-lg bg-secondarySite shadow-md"
             >
-              <img
-                className="min-h-52 object-cover"
-                src={item?.image}
-                alt=""
-              />
+              <img className="min-h-52 object-cover" src={item?.image} alt="" />
               <div className="p-4">
                 <h1 className="font-bold animate__animated animate__slideInDown">
                   {item?.name}

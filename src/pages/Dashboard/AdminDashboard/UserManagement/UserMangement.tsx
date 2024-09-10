@@ -42,7 +42,7 @@ const UserManagement = () => {
 
   return (
     <div>
-      <div className="font-poppins">
+      <div className="font-poppins px-2 lg:px-2">
         <div className="flex items-center justify-center gap-3  mb-5">
           <User2Icon />
           <h1 className=" font-bold text-xl text-primarySite">

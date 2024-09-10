@@ -66,7 +66,9 @@ const Facility = () => {
             ) : (
               currentFacilities?.map((item: TFacility, index: number) => (
                 <TableRow key={item?._id}>
-                  <TableCell className="font-medium">{((currentPage - 1) * itemsPerPage) + index + 1}</TableCell>
+                  <TableCell className="font-medium">
+                    {(currentPage - 1) * itemsPerPage + index + 1}
+                  </TableCell>
                   <TableCell className="font-medium">{item.name}</TableCell>
                   <TableCell>{item.facilityType}</TableCell>
                   <TableCell>{item.location}</TableCell>
@@ -79,17 +81,17 @@ const Facility = () => {
           </TableBody>
         </Table>
 
-        <div className="flex items-center flex-row-reverse justify-between mt-5">
+        <div className="lg:flex items-center flex-row-reverse justify-between mt-5">
           <PaginationComponent
             totalPages={totalPages}
             currentPage={currentPage}
             handlePageChange={handlePageChange}
           />
 
-          <div className=" flex justify-end">
+          <div className="flex lg:justify-end justify-center mt-2 lg:mt-0">
             <Link to="/admin-dashboard/facility-management">
               {" "}
-              <button className="border border-primaryBlack px-4 py-2 rounded-md hover:bg-primaryBlack hover:text-white transition-all ease-in-out duration-200">
+              <button className="border text-xs lg:text-base mr-2 lg:mr-0 border-primaryBlack px-4 py-2 rounded-md hover:bg-primaryBlack hover:text-white transition-all ease-in-out duration-200">
                 Manage All Facility
               </button>
             </Link>
