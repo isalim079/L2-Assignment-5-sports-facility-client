@@ -24,7 +24,7 @@ const Bookings = () => {
   const {
     data: allBookings,
     isLoading,
-    error,
+    
   } = useGetAllBookingsQuery(`Bearer ${token}`);
   // console.log(error);
 
@@ -34,10 +34,10 @@ const Bookings = () => {
   const totalItems = allBookings?.data?.length || 0;
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
-  const currentFacilities = allBookings?.data?.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
-  );
+  // const currentFacilities = allBookings?.data?.slice(
+  //   (currentPage - 1) * itemsPerPage,
+  //   currentPage * itemsPerPage
+  // );
   // console.log(currentFacilities);
 
   const handlePageChange = (page: number) => {

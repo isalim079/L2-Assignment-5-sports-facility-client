@@ -23,7 +23,7 @@ const UpdateFacility = () => {
 
   const { id } = useParams();
 
-  const { data: facilityDetails, isLoading } = useGetSingleFacilityQuery({
+  const { data: facilityDetails } = useGetSingleFacilityQuery({
     id: id,
     token: `Bearer ${token}`,
   });

@@ -1,15 +1,12 @@
 import axios from "axios";
 
-// baseUrl = http://localhost:5003
-// baseUrl = https://nursery-website-server.vercel.app
-
-const baseURL = "http://localhost:5003";
+const baseURL = "https://assignment-3-i-salim079.vercel.app";
 
 const axiosPublic = axios.create({
-    baseURL,
-    headers: {
-        "Content-Type": "application/json",
-    },
+  baseURL,
+  headers: {
+    "Content-Type": "application/json",
+  },
 });
 
 export default axiosPublic;

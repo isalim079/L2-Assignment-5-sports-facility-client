@@ -35,7 +35,7 @@ const CreateBookings = () => {
   const user = useSelector(selectCurrentUser);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit } = useForm();
   const [date, setDate] = useState<Date>();
   const [selectedFacility, setSelectedFacility] = useState("");
   const { data: allFacility } = useGetAllFacilitiesQuery(undefined);
