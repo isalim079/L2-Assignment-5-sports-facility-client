@@ -6,7 +6,7 @@ import { FaFacebook } from "react-icons/fa";
 const Footer = () => {
   return (
     <div className="">
-      <div className="max-w-screen-xl mx-auto py-24 font-poppins">
+      <div className="max-w-screen-xl mx-auto py-10 lg:py-24 font-poppins px-2 lg:px-0">
         <div>
           <div className="flex flex-col justify-center items-center space-y-4">
             {/* ---------------------------------------------------------------- */}

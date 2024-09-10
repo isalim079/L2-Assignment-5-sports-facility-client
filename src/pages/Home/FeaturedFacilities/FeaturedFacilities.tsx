@@ -17,7 +17,7 @@ const FeaturedFacilities = () => {
 
   return (
     <div>
-      <div className="max-w-screen-xl mx-auto font-poppins my-24">
+      <div className="max-w-screen-xl mx-auto font-poppins my-10 lg:my-24 px-2 lg:px-0">
         <h1 className="text-center text-3xl uppercase font-bold text-primarySite">
           Explore Our Top Facilities
         </h1>

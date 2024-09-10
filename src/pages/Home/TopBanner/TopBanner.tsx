@@ -8,13 +8,13 @@ const TopBanner = () => {
     <div className="font-poppins">
       <div className="">
         <div className="relative">
-          <img className="h" src={bg} alt="" />
+          <img className="h-96 lg:h-auto object-cover" src={bg} alt="" />
           <div className="absolute inset-0 bg-black/50"></div>
           <div className="absolute inset-0 text-white flex flex-col justify-center items-center max-w-screen-xl mx-auto space-y-7">
-            <h1 className="font-archivo text-4xl uppercase animate__animated animate__lightSpeedInLeft">
+            <h1 className="font-archivo mt-20 lg:mt-0 text-xl text-center lg:text-4xl uppercase animate__animated animate__lightSpeedInLeft">
               Book Your Sports Experience Today
             </h1>
-            <p className="text-center lg:w-[80%]">
+            <p className="text-center text-sm lg:text-base lg:w-[80%] w-[95%] text-justify">
               Find and reserve the best sports facilities in your area with just
               a few clicks. Enjoy hassle-free booking for all your favorite
               sports activities, anytime, anywhere. Unlock exclusive offers and

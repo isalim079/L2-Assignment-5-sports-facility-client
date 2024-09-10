@@ -3,8 +3,8 @@ import { MdSwipeRightAlt } from "react-icons/md";
 
 const HowItWorks = () => {
   return (
-    <div  className="bg-bg3 ">
-      <div className="max-w-screen-xl mx-auto font-poppins my-24">
+    <div className="bg-bg3 ">
+      <div className="max-w-screen-xl mx-auto font-poppins my-10 lg:my-24 px-2 lg:px-0">
         <h1 className="text-center text-3xl uppercase font-bold text-primarySite">
           How It Works...??
         </h1>
@@ -13,7 +13,7 @@ const HowItWorks = () => {
           for an unforgettable experience!
         </p>
         <Separator className="my-12" />
-        <div className=" grid grid-cols-5 gap-7">
+        <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-7">
           {/* ----------------- Step 1 -------------------- */}
           <div className="mt-[160px] animate__animated animate__fadeInDownBig ">
             <div className="flex justify-end text-6xl text-primarySite">

@@ -7,7 +7,7 @@ import ScrollToTop from "react-scroll-to-top";
 
 const Home = () => {
   return (
-    <div>
+    <div className="">
       <TopBanner />
       <FeaturedFacilities />
       <HowItWorks />

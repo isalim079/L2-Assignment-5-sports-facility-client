@@ -57,7 +57,7 @@ const upcomingEventsData = [
 const UpcomingEvents = () => {
   return (
     <div className="bg-bg1 bg-cover">
-      <div className="max-w-screen-xl mx-auto font-poppins py-24">
+      <div className="max-w-screen-xl mx-auto font-poppins py-10 lg:py-24">
         <h1 className="text-center text-3xl uppercase font-bold text-primarySite">
           Upcoming Sports Events
         </h1>
@@ -65,7 +65,7 @@ const UpcomingEvents = () => {
           Discover What's Coming Next at Our Sports Facilities!
         </p>
         <Separator className="my-12" />
-        <div className="grid grid-cols-2 gap-10">
+        <div className="grid lg:grid-cols-2 gap-10">
           {upcomingEventsData?.map((item) => (
             <div key={item?.eventName}>
               <div className="shadow-md p-4 ">
