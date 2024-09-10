@@ -17,12 +17,7 @@ const Login = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
-    defaultValues: {
-      email: "srs@mail.com",
-      password: "programming-hero",
-    },
-  });
+  } = useForm();
 
   const [login] = useLoginMutation();
 

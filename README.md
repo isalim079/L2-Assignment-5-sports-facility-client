@@ -1,50 +1,51 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Sports Facility Management - SFORCE
 
-## Expanding the ESLint configuration
+## Introduction
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+This is a website for sports facility management. Where one user can book sports facility all over the world. It's so easy. Just pick the location, date, time and you are on!. Just play
+## Project Description
 
-- Configure the top-level `parserOptions` property like this:
+This is a website for booking sports facility. You have dashboard, facility list, admin panel, user panel and so on. Explore all facility and book your facility. Pay with stripe payment system
+## Features
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- Searching from all facility
+- Filter facility by price
+- Add, Update, Delete facility
+- Image upload using imgbb
+- Pagination, Responsiveness, Sorting
+- Booking, Booking Management
+- Checkout in Stripe payment method
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Technology Stack
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+- React, Redux, RTK Query, Imgbb api, Stripe, React hook form, sonner, React icons, sweetalert2, tailwind css, animate css, lucide react, moment, react fast marquee, zod, typescript
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Installation Guideline
+
+> First you have to clone the project. <br>
+> After successfully clone the project, open that folder and type "npm i" <br>
+> Then type "npm run dev" <br>
+> Your project will run on localhost <br>
+> You have to add  VITE_IMAGE_HOSTING_KEY and VITE_Payment_Gateway_PK in .env.local file. Create it in root folder and put your key <br>
+
+
+### Installation Steps
+
+1. First you have to clone the project.
+2. After successfully clone the project, open that folder and type "npm i"
+3. Then type "npm run dev"
+4. Your project will run on localhost
+5. You have to add  VITE_IMAGE_HOSTING_KEY and VITE_Payment_Gateway_PK in `.env.local` file. Create it in root folder and put your key
+
+### Configuration
+
+1. Create a `.env.local` file in the root directory of the project.
+2. Add necessary configuration variables in the `.env.local` file.
+   Example:
+   ```bash
+    VITE_IMAGE_HOSTING_KEY=Hosting key from imgbb
+    VITE_Payment_Gateway_PK=Stripe key from stripe development profile
+   ```
