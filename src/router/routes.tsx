@@ -2,8 +2,10 @@ import App from "@/App";
 import AdminProtectedRoute from "@/components/layout/AdminProtectedRoute";
 import ProtectedRoute from "@/components/layout/ProtectedRoute";
 import NotFound from "@/components/NotFound/NotFound";
+import About from "@/pages/About/About";
 import Checkout from "@/pages/Bookings/Checkout";
 import CreateBookings from "@/pages/Bookings/CreateBookings";
+import Contact from "@/pages/Contact/Contact";
 import AddAdmin from "@/pages/Dashboard/AdminDashboard/AddAdmin/AddAdmin";
 import AdminDashboard from "@/pages/Dashboard/AdminDashboard/AdminDashboard";
 import FacilityBookings from "@/pages/Dashboard/AdminDashboard/FacilityBookings/FacilityBookings";
@@ -41,6 +43,14 @@ const router = createBrowserRouter([
         element: <Register />,
       },
       {
+        path: "/aboutUs",
+        element: <About />,
+      },
+      {
+        path: "/contactUs",
+        element: <Contact />,
+      },
+      {
         path: "/create-bookings",
         element: <CreateBookings />,
       },
@@ -53,8 +63,8 @@ const router = createBrowserRouter([
         element: <Facility />,
       },
       {
-        path: 'facility-details/:id',
-        element: <FacilityDetails />
+        path: "facility-details/:id",
+        element: <FacilityDetails />,
       },
       {
         path: "/admin-dashboard",
@@ -116,7 +126,7 @@ const router = createBrowserRouter([
             path: "transaction-history",
             element: <TransactionHistory />,
           },
-        ]
+        ],
       },
     ],
   },

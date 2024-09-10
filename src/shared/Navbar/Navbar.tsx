@@ -62,8 +62,12 @@ const Navbar = () => {
             {/* -------------------- Mid Section ------------------------ */}
             <div className="font-poppins hidden lg:block">
               <ul className="flex items-center gap-5 ">
-                <li>About</li>
-                <li>Contact</li>
+                <Link to="/aboutUs">
+                  <li>About</li>
+                </Link>
+                <Link to="/contactUs">
+                  <li>Contact</li>
+                </Link>
                 <Link to="/facility">
                   <li>Facility</li>
                 </Link>
@@ -121,8 +125,12 @@ const Navbar = () => {
                     <div className="space-y-4 text-xs list-none">
                       <div className="font-poppins">
                         <ul className="flex flex-col items-center gap-5 ">
-                          <li>About</li>
-                          <li>Contact</li>
+                          <Link to="/aboutUs">
+                            <li>About</li>
+                          </Link>
+                          <Link to="/contactUs">
+                            <li>Contact</li>
+                          </Link>
                           <Link to="/facility">
                             <li>Facility</li>
                           </Link>

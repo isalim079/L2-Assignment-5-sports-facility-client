@@ -2,6 +2,7 @@ import logo from "@/assets/logo.png";
 import { Separator } from "@/components/ui/separator";
 import { BsTwitterX, BsYoutube } from "react-icons/bs";
 import { FaFacebook } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -29,17 +30,17 @@ const Footer = () => {
             {/* --------------------------------------------------------------------- */}
             <Separator className=" bg-primaryBlack/20" />
             <div className="flex h-5 items-center space-x-4 text-sm">
-              <div>Home</div>
+              <div><Link to='/'>Home</Link></div>
               <Separator
                 orientation="vertical"
                 className=" bg-primaryBlack/40"
               />
-              <div>About Us</div>
+              <div><Link to='/aboutUs'>About Us</Link></div>
               <Separator
                 orientation="vertical"
                 className=" bg-primaryBlack/40"
               />
-              <div>Contact Us</div>
+              <div><Link to='/contactUs'>Contact Us</Link></div>
             </div>
           </div>
         </div>
