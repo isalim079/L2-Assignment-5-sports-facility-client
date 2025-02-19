@@ -3,7 +3,7 @@ import contact from "@/assets/contact.png";
 const Contact = () => {
   return (
     <div className=" max-w-screen-xl mx-auto">
-      <div className="lg:flex justify-around items-center  lg:h-screen">
+      <div className="lg:flex justify-around items-center  lg:h-screen pt-32">
         <div className="max-w-md mt-10 p-6 bg-white rounded-lg shadow-md  w-full">
           <h2 className="text-2xl font-bold text-center mb-6 text-primarySite">
             Contact Us

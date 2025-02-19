@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import logo from "../../assets/logo.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { logout, selectCurrentUser } from "@/redux/features/auth/authSlice";
 import { useDispatch } from "react-redux";
@@ -38,13 +38,16 @@ const Navbar = () => {
 
   const [menuToggle, setMenuToggle] = useState(false);
 
+  const {pathname} = useLocation()
+  console.log(pathname);
+
   return (
     <div>
       <div
         className={`transition-all ease-in-out duration-300 ${
           isScrolled
-            ? "fixed top-0 left-0 w-full z-10 shadow-md bg-secondarySite/80"
-            : "absolute top-0 left-0 w-full z-10 bg-secondarySite/80"
+            ? `fixed top-0 left-0 w-full z-10 shadow-md bg-secondarySite/80`
+            : `absolute top-0 left-0 w-full z-10 ${pathname !== `/` ? `bg-secondarySite/80 text-primaryBlack` : 'text-white '}`
         }`}
       >
         <div className="max-w-screen-xl mx-auto py-2 px-2 lg:px-0">
@@ -53,7 +56,7 @@ const Navbar = () => {
             <Link to="/">
               <div className="flex items-center gap-3">
                 <img className="lg:w-14 w-10" src={logo} alt="" />
-                <p className="font-archivo text-lg lg:text-3xl text-primaryBlack">
+                <p className={`font-archivo text-lg lg:text-3xl ${!isScrolled ? `${pathname !== `/` ? 'text-primaryBlack' : 'text-white'}` : 'text-primaryBlack'} `}>
                   SFORCE
                 </p>
               </div>

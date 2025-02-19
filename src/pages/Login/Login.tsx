@@ -17,6 +17,7 @@ const Login = () => {
     register,
     handleSubmit,
     formState: { errors },
+    setValue
   } = useForm();
 
   const [login] = useLoginMutation();
@@ -45,6 +46,16 @@ const Login = () => {
     }
   };
 
+  const fillAdminCredentials = () => {
+    setValue("email", "srs@mail.com"); 
+    setValue("password", "programming-hero"); 
+  };
+
+  const fillUserCredentials = () => {
+    setValue("email", "srs2@mail.com"); 
+    setValue("password", "programming-hero"); 
+  };
+
   return (
     <div>
       <div>
@@ -52,7 +63,7 @@ const Login = () => {
           <img className="w-full object-cover h-[100vh]" src={bg} alt="" />
           <div className="absolute inset-0 bg-primaryBlack/70"></div>
           <div className="absolute text-white inset-0 flex flex-col justify-center items-center">
-            <div className="bg-white/30 p-10 rounded-lg shadow-md">
+            <div className="bg-white/20 p-10 rounded-lg shadow-md">
               <div className="flex flex-col justify-center items-center mb-10">
                 <img
                   className="w-14 animate__animated animate__bounceInDown"
@@ -111,11 +122,15 @@ const Login = () => {
                   >
                     Login
                   </button>
-                  <p className="text-sm mt-3">
-                    Don't have an account?{" "}
+                  <p className="text-sm mt-3 flex justify-between">
+                   <span> Don't have an account?{" "}
                     <span className="ml-2 font-bold underline cursor-pointer">
                       <Link to="/register">Register</Link>
-                    </span>
+                    </span></span>
+                    <span>
+              <button onClick={fillAdminCredentials} className="underline">Admin</button>
+              <button onClick={fillUserCredentials} className="underline ml-2">User</button>
+              </span>
                   </p>
                 </div>
               </form>
