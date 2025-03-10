@@ -47,7 +47,12 @@ const FeaturedFacilities = () => {
                       {topFacility?.name}
                     </h1>
                     <Separator className="my-2 bg-primaryBlack" />
-                    <p>{topFacility?.description}</p>
+                    <p>{topFacility?.description?.length > 150 ? <span>{topFacility?.description?.slice(0, 150)} <span className="underline text-sm font-bold text-blue-500"><Link onClick={()=> {
+                      window.scrollTo({
+                        top: 0,
+                        behavior: "smooth",
+                      })
+                    }} to={`/facility-details/${topFacility?._id}`}>read more</Link></span></span> : topFacilities?.description}</p>
                   </div>
                  </div>
                   <div className="flex justify-center ">

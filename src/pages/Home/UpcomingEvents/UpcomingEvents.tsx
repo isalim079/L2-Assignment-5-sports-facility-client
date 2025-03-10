@@ -67,8 +67,8 @@ const UpcomingEvents = () => {
         <Separator className="my-12" />
         <div className="grid lg:grid-cols-2 gap-10">
           {upcomingEventsData?.map((item) => (
-            <div key={item?.eventName}>
-              <div className="shadow-md p-4 ">
+            <div key={item?.eventName} className="">
+              <div className="shadow-md p-4 bg-white">
                 <div className="flex items-center justify-between">
                   <img
                     className="w-12 mb-1 animate__animated animate__fadeInUp"
