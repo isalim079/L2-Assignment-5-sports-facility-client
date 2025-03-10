@@ -16,6 +16,10 @@ export type TFacility = {
 const FeaturedFacilities = () => {
   const { data: allFacilities } = useGetAllFacilitiesQuery(undefined);
 
+  const topFacilities = allFacilities?.data?.filter(
+    (facility: TFacility) => facility.facilityType === "topFacility"
+  );
+
   return (
     <div>
       <div className="max-w-screen-xl mx-auto font-poppins my-10 lg:my-24 px-2 lg:px-0">
@@ -27,9 +31,7 @@ const FeaturedFacilities = () => {
           the best experience for your athletic needs.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mt-12">
-          {allFacilities?.data?.slice(0,4).map(
-            (topFacility: TFacility) =>
-              topFacility?.facilityType === "topFacility" && (
+          {topFacilities?.slice(0,4).map((topFacility: TFacility) => (
                 <div
                   key={topFacility?._id}
                   className="rounded-lg bg-secondarySite shadow-md flex flex-col justify-between"
@@ -52,8 +54,7 @@ const FeaturedFacilities = () => {
                     <Link to={`/facility-details/${topFacility?._id}`} className="w-full"><button className="bg-primaryBlack text-white font-semibold w-full py-2">Details</button></Link>
                   </div>
                 </div>
-              )
-          )}
+              ))}
         </div>
       </div>
     </div>

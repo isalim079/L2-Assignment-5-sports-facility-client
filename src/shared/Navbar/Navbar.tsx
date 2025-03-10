@@ -39,7 +39,7 @@ const Navbar = () => {
   const [menuToggle, setMenuToggle] = useState(false);
 
   const {pathname} = useLocation()
-  console.log(pathname);
+  // console.log(pathname);
 
   return (
     <div>
