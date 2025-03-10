@@ -51,7 +51,12 @@ const FeaturedFacilities = () => {
                   </div>
                  </div>
                   <div className="flex justify-center ">
-                    <Link to={`/facility-details/${topFacility?._id}`} className="w-full"><button className="bg-primaryBlack text-white font-semibold w-full py-2">Details</button></Link>
+                    <Link onClick={()=> {
+                      window.scrollTo({
+                        top: 0,
+                        behavior: "smooth",
+                      })
+                    }} to={`/facility-details/${topFacility?._id}`} className="w-full"><button className="bg-primaryBlack text-white font-semibold w-full py-2">Details</button></Link>
                   </div>
                 </div>
               ))}
