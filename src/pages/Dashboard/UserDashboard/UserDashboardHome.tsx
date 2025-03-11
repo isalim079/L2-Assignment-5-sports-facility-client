@@ -1,5 +1,6 @@
 import { FaDollarSign, FaFileInvoice, FaClock, FaCheckCircle } from "react-icons/fa";
 import { Line } from "react-chartjs-2";
+import CountUp from 'react-countup';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -101,7 +102,7 @@ const UserDashboardHome = () => {
           <FaDollarSign className="text-3xl text-blue-500" />
           <div>
             <h2 className="text-gray-500 text-sm font-semibold">Total Invested</h2>
-            <p className="text-2xl font-bold">$ {totalPaidAmount}</p>
+            <p className="text-2xl font-bold">$  <CountUp end={totalPaidAmount} enableScrollSpy /></p>
           </div>
         </motion.div>
         <motion.div
@@ -111,7 +112,7 @@ const UserDashboardHome = () => {
           <FaFileInvoice className="text-3xl text-green-500" />
           <div>
             <h2 className="text-gray-500 text-sm font-semibold">Total Booking</h2>
-            <p className="text-2xl font-bold">{allBookings?.data?.length}</p>
+            <p className="text-2xl font-bold"><CountUp end={allBookings?.data?.length} enableScrollSpy /> </p>
           </div>
         </motion.div>
         <motion.div
@@ -121,7 +122,7 @@ const UserDashboardHome = () => {
           <FaClock className="text-3xl text-orange-500" />
           <div>
             <h2 className="text-gray-500 text-sm font-semibold">Unconfirmed Booking</h2>
-            <p className="text-2xl font-bold">{unconfirmedBookings?.length}</p>
+            <p className="text-2xl font-bold"> <CountUp end={unconfirmedBookings?.length} enableScrollSpy /></p>
           </div>
         </motion.div>
         <motion.div
@@ -131,7 +132,7 @@ const UserDashboardHome = () => {
           <FaCheckCircle className="text-3xl text-pink-500" />
           <div>
             <h2 className="text-gray-500 text-sm font-semibold">Confirmed Booking</h2>
-            <p className="text-2xl font-bold">{confirmedBookings?.length}</p>
+            <p className="text-2xl font-bold"><CountUp end={confirmedBookings?.length} enableScrollSpy /></p>
           </div>
         </motion.div>
       </div>
