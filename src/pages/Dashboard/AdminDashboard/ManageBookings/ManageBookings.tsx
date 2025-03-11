@@ -7,7 +7,10 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import bookings from "@/assets/bookings.png";
-import { useGetAllBookingsQuery } from "@/redux/features/bookings/bookingManagement.api";
+import {
+  useDeleteBookingAdminMutation,
+  useGetAllBookingsQuery,
+} from "@/redux/features/bookings/bookingManagement.api";
 import { useSelector } from "react-redux";
 import { useCurrentToken } from "@/redux/features/auth/authSlice";
 import { TBooking } from "@/types/types";
@@ -15,13 +18,19 @@ import { useState } from "react";
 import PaginationComponent from "@/components/pagination/pagination";
 import Loading from "@/components/Loading/Loading";
 import ItemsPerPage from "@/components/pagination/ItemsPerPage";
+import Swal from "sweetalert2";
+import { BiTrash } from "react-icons/bi";
 
 const ManageBookings = () => {
   const token = useSelector(useCurrentToken);
 
-  const { data: allBookings, isLoading } = useGetAllBookingsQuery(
-    `Bearer ${token}`
-  );
+  const {
+    data: allBookings,
+    isLoading,
+    refetch,
+  } = useGetAllBookingsQuery(`Bearer ${token}`);
+
+  const [deleteBookings] = useDeleteBookingAdminMutation();
   // console.log(allBookings);
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -32,7 +41,7 @@ const ManageBookings = () => {
 
   const currentBookings = allBookings?.data?.slice(
     (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
+    currentPage * itemsPerPage,
   );
   // console.log(currentFacilities);
 
@@ -42,6 +51,30 @@ const ManageBookings = () => {
 
   const handleItemsPerPage = (data: string) => {
     setItemsPerPage(Number(data));
+  };
+
+  const handleDelete = (item: any) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteBookings({ id: item?._id, token: `Bearer ${token}` });
+
+        Swal.fire({
+          title: "Deleted!",
+          text: "Booking has been deleted successfully",
+          icon: "success",
+        }).then(() => {
+          refetch();
+        });
+      }
+    });
   };
 
   return (
@@ -64,8 +97,9 @@ const ManageBookings = () => {
               <TableHead className="w-[100px]">Name</TableHead>
               <TableHead>Email</TableHead>
               <TableHead>Facility</TableHead>
-              <TableHead className="text-right">Is Booked</TableHead>
-              <TableHead className="text-right">Payable Amount</TableHead>
+              <TableHead className="text-left">Is Booked</TableHead>
+              <TableHead className="text-left">Payable Amount</TableHead>
+              <TableHead className="text-left">Action</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -87,18 +121,26 @@ const ManageBookings = () => {
                   <TableCell>{item?.user?.email}</TableCell>
                   <TableCell>{item?.facility?.name}</TableCell>
                   <TableCell
-                    className={`text-right font-semibold ${
+                    className={`text-left font-semibold ${
                       item.isBooked === "confirmed"
                         ? "text-green-600"
                         : item.isBooked === "unconfirmed"
-                        ? "text-yellow-500"
-                        : "text-red-600"
+                          ? "text-yellow-500"
+                          : "text-red-600"
                     }`}
                   >
                     {item?.isBooked}
                   </TableCell>
-                  <TableCell className="text-right font-semibold">
+                  <TableCell className="text-left font-semibold">
                     ${item?.payableAmount}
+                  </TableCell>
+                  <TableCell className="">
+                    <button
+                      onClick={() => handleDelete(item)}
+                      className="shadow-md px-4 py-2 rounded-md bg-red-600 text-white hover:shadow-sm flex items-center gap-2"
+                    >
+                      <BiTrash className="text-xl" /> Delete
+                    </button>
                   </TableCell>
                 </TableRow>
               ))

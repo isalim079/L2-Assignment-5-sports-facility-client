@@ -69,11 +69,11 @@ const Facility = () => {
                   <TableCell className="font-medium">
                     {(currentPage - 1) * itemsPerPage + index + 1}
                   </TableCell>
-                  <TableCell className="font-medium">{item.name}</TableCell>
-                  <TableCell>{item.facilityType}</TableCell>
-                  <TableCell>{item.location}</TableCell>
+                  <TableCell className="font-medium">{item?.name}</TableCell>
+                  <TableCell>{item?.facilityType}</TableCell>
+                  <TableCell>{item?.location}</TableCell>
                   <TableCell className="text-right font-semibold">
-                    ${item.pricePerHour}
+                    ${item?.pricePerHour}
                   </TableCell>
                 </TableRow>
               ))

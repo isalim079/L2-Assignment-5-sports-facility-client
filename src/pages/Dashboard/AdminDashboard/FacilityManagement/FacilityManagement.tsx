@@ -125,9 +125,9 @@ const FacilityManagement = () => {
                   <TableCell className="font-medium">
                     {(currentPage - 1) * itemsPerPage + index + 1}
                   </TableCell>
-                  <TableCell className="font-medium">{item.name}</TableCell>
+                  <TableCell className="font-medium">{item?.name}</TableCell>
                   <TableCell>
-                    {item.facilityType === "topFacility" ? (
+                    {item?.facilityType === "topFacility" ? (
                       <p>Top Facility</p>
                     ) : (
                       <p>Normal Facility</p>
@@ -135,7 +135,7 @@ const FacilityManagement = () => {
                   </TableCell>
                   <TableCell>{item.location}</TableCell>
                   <TableCell className="text-right font-semibold">
-                    ${item.pricePerHour}
+                    ${item?.pricePerHour}
                   </TableCell>
                   <TableCell className="text-right">
                     <div className="space-x-5 flex justify-center">

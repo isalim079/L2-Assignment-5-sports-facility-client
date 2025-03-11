@@ -36,6 +36,24 @@ const bookingManagementApi = baseApi.injectEndpoints({
         }
       }),
     }),
+    deleteBooking: builder.mutation({
+      query: ({token, id}) => ({
+        url: `/bookings/${id}`,
+        method: "DELETE",
+        headers: {
+          Authorization: token
+        }
+      }),
+    }),
+    deleteBookingAdmin: builder.mutation({
+      query: ({token, id}) => ({
+        url: `/bookings/admin/${id}`,
+        method: "DELETE",
+        headers: {
+          Authorization: token
+        }
+      }),
+    }),
     updateIsBooked: builder.mutation({
       query: ({id, data}) => ({
         url: `/bookings/${id}/status`,
@@ -52,4 +70,6 @@ export const {
   useCreateBookingMutation,
   useUpdateIsBookedMutation,
   useGetUserBookingsQuery,
+  useDeleteBookingMutation,
+  useDeleteBookingAdminMutation
 } = bookingManagementApi;
