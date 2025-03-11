@@ -17,6 +17,7 @@ import UserManagement from "@/pages/Dashboard/AdminDashboard/UserManagement/User
 import TransactionHistory from "@/pages/Dashboard/UserDashboard/TransactionHistory/TransactionHistory";
 import UserBookings from "@/pages/Dashboard/UserDashboard/UserBookings/UserBookings";
 import UserDashboard from "@/pages/Dashboard/UserDashboard/UserDashboard";
+import UserDashboardHome from "@/pages/Dashboard/UserDashboard/UserDashboardHome";
 import Facility from "@/pages/Faciltity/Facility";
 import FacilityDetails from "@/pages/Faciltity/FacilityDetails";
 import Home from "@/pages/Home/Home";
@@ -116,7 +117,7 @@ const router = createBrowserRouter([
         children: [
           {
             path: "",
-            element: <UserBookings />,
+            element: <UserDashboardHome />,
           },
           {
             path: "booking-management",

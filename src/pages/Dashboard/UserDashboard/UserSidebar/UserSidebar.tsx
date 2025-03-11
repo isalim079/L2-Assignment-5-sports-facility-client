@@ -20,7 +20,7 @@ const UserSidebar = () => {
   return (
     <div>
       <div className="px-8 py-6 font-poppins  rounded-lg">
-        <div className="lg:max-w-60 flex items-center  lg:items-start flex-row-reverse lg:flex-row lg:flex-col justify-between lg:space-y-10 lg:fixed">
+        <div className="lg:max-w-60 flex items-center  lg:items-start flex-row-reverse lg:flex-col justify-between lg:space-y-10 lg:fixed">
           <div className=" flex flex-col items-start">
             <Link to="/">
               <div className="flex gap-2 lg:gap-0 lg:flex-col items-center">

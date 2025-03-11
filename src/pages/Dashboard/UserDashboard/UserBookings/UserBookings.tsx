@@ -44,6 +44,7 @@ const UserBookings = () => {
   const handleItemsPerPage = (data: string) => {
     setItemsPerPage(Number(data));
   };
+  // console.log(currentBookings);
 
   return (
     <div>
@@ -84,27 +85,27 @@ const UserBookings = () => {
                     {(currentPage - 1) * itemsPerPage + index + 1}
                   </TableCell>
 
-                  <TableCell>{item.facility.name}</TableCell>
+                  <TableCell>{item?.facility?.name}</TableCell>
                   <TableCell
                     className={`text-left font-semibold ${
-                      item.isBooked === "confirmed"
+                      item?.isBooked === "confirmed"
                         ? "text-green-600"
                         : item.isBooked === "unconfirmed"
                         ? "text-yellow-500"
                         : "text-red-600"
                     }`}
                   >
-                    {item.isBooked}
+                    {item?.isBooked}
                   </TableCell>
                   <TableCell className="text-left font-semibold">
-                    ${item.payableAmount}
+                    ${item?.payableAmount}
                   </TableCell>
                   <TableCell className="text-left">
-                    {moment(item.date).format("DD MMM, YYYY")}
+                    {moment(item?.date).format("DD MMM, YYYY")}
                   </TableCell>
                   <TableCell className="text-left">
-                    {moment(item.startTime, "HH:mm").format("hh:mm A")} -{" "}
-                    {moment(item.endTime, "HH:mm").format("hh:mm A")}
+                    {moment(item?.startTime, "HH:mm").format("hh:mm A")} -{" "}
+                    {moment(item?.endTime, "HH:mm").format("hh:mm A")}
                   </TableCell>
                 </TableRow>
               ))

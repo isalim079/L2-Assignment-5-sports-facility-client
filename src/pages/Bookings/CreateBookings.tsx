@@ -59,17 +59,18 @@ const CreateBookings = () => {
     const facilityData = allFacility?.data?.filter(
       (item: any) => item?._id === selectedFacility
     );
-    // console.log(facilityData[0]);
+    // console.log(facilityData[0]?.pricePerHour);
 
     const createBookingsData = {
       user: user?.user.id,
       facility: selectedFacility,
-      payableAmount: facilityData[0]?.pricePerHour,
+      payableAmount: await facilityData[0]?.pricePerHour,
       date: moment(date).format("YYYY-MM-DD"),
       startTime: data.startTime,
       endTime: data.endTime,
       isBooked: "unconfirmed",
     };
+    // console.log(createBookingsData);
 
     try {
       const res = await addBookingsData({
