@@ -76,10 +76,10 @@ const Bookings = () => {
                     {(currentPage - 1) * itemsPerPage + index + 1}
                   </TableCell>
                   <TableCell className="font-medium">
-                    {item.user.name}
+                    {item?.user?.name}
                   </TableCell>
-                  <TableCell>{item.user.email}</TableCell>
-                  <TableCell>{item.facility.name}</TableCell>
+                  <TableCell>{item?.user?.email}</TableCell>
+                  <TableCell>{item?.facility?.name}</TableCell>
                   <TableCell
                     className={`text-right font-semibold ${
                       item.isBooked === "confirmed"
@@ -89,10 +89,10 @@ const Bookings = () => {
                         : "text-red-600"
                     }`}
                   >
-                    {item.isBooked}
+                    {item?.isBooked}
                   </TableCell>
                   <TableCell className="text-right font-semibold">
-                    ${item.payableAmount}
+                    ${item?.payableAmount}
                   </TableCell>
                 </TableRow>
               ))

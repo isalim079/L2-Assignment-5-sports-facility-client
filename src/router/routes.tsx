@@ -8,7 +8,7 @@ import CreateBookings from "@/pages/Bookings/CreateBookings";
 import Contact from "@/pages/Contact/Contact";
 import AddAdmin from "@/pages/Dashboard/AdminDashboard/AddAdmin/AddAdmin";
 import AdminDashboard from "@/pages/Dashboard/AdminDashboard/AdminDashboard";
-import FacilityBookings from "@/pages/Dashboard/AdminDashboard/FacilityBookings/FacilityBookings";
+import AdminDashboardHome from "@/pages/Dashboard/AdminDashboard/AdminDashboardHome";
 import AddFacility from "@/pages/Dashboard/AdminDashboard/FacilityManagement/AddFacility";
 import FacilityManagement from "@/pages/Dashboard/AdminDashboard/FacilityManagement/FacilityManagement";
 import UpdateFacility from "@/pages/Dashboard/AdminDashboard/FacilityManagement/UpdateFacility";
@@ -83,7 +83,7 @@ const router = createBrowserRouter([
           },
           {
             path: "",
-            element: <FacilityBookings />,
+            element: <AdminDashboardHome />,
           },
           {
             path: "facility-management",
