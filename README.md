@@ -171,12 +171,4 @@ src/
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-**Built with ❤️ by the SFORCE Team**
-
-For support or inquiries, please contact us at [support@sforce.com](mailto:support@sforce.com)
